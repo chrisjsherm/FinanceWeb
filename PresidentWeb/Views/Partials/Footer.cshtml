@@ -1,0 +1,56 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+<footer>
+    <div class="row footer">
+        <div class="small-12 medium-4 large-4 columns">
+            <h4>Menu</h4>
+
+            @{
+                var homePage = Umbraco.TypedContentSingleAtXPath("//Home");
+                var menuItems = homePage.Children
+                    .Where("IncludeInNavigation");
+            }
+
+            <ul>
+                <li><a href="/home">Home</a></li>
+
+                @foreach (var item in menuItems)
+                {
+                    <li><a href="@item.Url">@item.Name</a></li>
+                }
+            </ul>
+        </div>
+
+        <div class="small-12 medium-4 large-4 columns">
+            <h4>Contact</h4>
+
+            <ul>
+                <li>
+                    <a href="tel:@Umbraco.Field("contactPhone")">@Umbraco.Field("contactPhone")</a>
+                </li>
+                <li>
+                    <a href="mailto:supportvpf@vt.edu?subject=Vice President for Finance | Contact Us">Email</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="small-12 medium-4 large-4 columns">
+            <h4>Address</h4>
+
+            @Umbraco.Field("address", recursive: true)
+        </div>
+    </div>
+
+    <div class="row copyright">
+        <div class="small-12 medium-6 large-6 columns">
+            &copy; @DateTime.Now.Year @Umbraco.Field("siteName", recursive: true), All Rights Reserved.<br>
+        </div>
+        <div class="medium-6 large-6 columns hide-for-small text-right">
+            Site by <a href="http://shermandigital.com/">Chris Sherman</a>
+        </div>
+        <div class="small-12 columns show-for-small">
+            <br>
+            Site by <a href="http://shermandigital.com/">Chris Sherman</a>
+        </div>
+    </div>
+</footer>

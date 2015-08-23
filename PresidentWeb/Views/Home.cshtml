@@ -1,0 +1,35 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="banner">
+    <div class="row">
+        <div class="large-6 columns">
+            <h1><span>@Umbraco.Field("BannerHeading")</span></h1>
+            <h3 class="sub-header"><span>@Umbraco.Field("BannerSubHeading")</span></h3>
+        </div>
+    </div>
+</div>
+
+<div class="banner-follow">
+    <div class="row">
+        <div class="large-12 columns">
+            <p>@Umbraco.Field("BannerTagline")</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-12 columns">
+        <h3>@Umbraco.Field("Headline")</h3>
+
+        <div class="panel-box-padded-left right show-for-medium-up">
+            <img src="@Umbraco.Field("leaderProfile")" />
+            <h5 class="text-center">@Umbraco.Field("leaderName")</h5>
+        </div>
+
+        @Umbraco.Field("organizationSummary")
+    </div>
+</div>

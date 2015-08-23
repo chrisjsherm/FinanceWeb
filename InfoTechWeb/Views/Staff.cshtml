@@ -1,0 +1,49 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="title-banner">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1>@Umbraco.Field("Headline")</h1>
+        </div>
+    </div>
+</div>
+
+@{
+    var members = Umbraco.TypedContentAtXPath("//Staffmember");
+}
+
+@if (members.Count() > 0)
+{
+    foreach (var item in members)
+    {
+        <div class="row">
+            <div class="large-12 columns">
+
+                <h3>
+                    <span class="gt">&gt;</span> @item.GetPropertyValue("Name") | @item.GetPropertyValue("position")
+                </h3>
+
+                <ul class="fa-ul">
+                    @if (item.HasValue("phone"))
+                    {
+                        <li>
+                            <i class="fa-li fa fa-phone"></i>
+                            <a href="tel:@item.GetPropertyValue("phone")">@item.GetPropertyValue("phone")</a>
+                        </li>
+                    }
+
+                    @if (item.HasValue("emailAddress"))
+                    {
+                        <li>
+                            <i class="fa-li fa fa-envelope"></i>
+                            <a href="mailto:@item.GetPropertyValue("emailAddress")?subject=@Umbraco.Field("siteName", recursive: true) | Contact Us">@item.GetPropertyValue("emailAddress")</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+}

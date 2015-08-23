@@ -1,0 +1,44 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var homePage = Umbraco.TypedContentSingleAtXPath("//Home");
+    var menuItems = homePage.Children
+        .Where("IncludeInNavigation");
+}
+
+<div class="contain-to-grid">
+    <nav class="top-bar" data-topbar data-options="sticky_on: large" role="navigation">
+        <ul class="title-area">
+
+            <li class="name">
+                <h1>
+                    <a href="/">
+                        @if (Model.Content.HasValue("logo"))
+                        {
+                            <img alt="@Umbraco.Field("siteName", recursive: true)" src="@Umbraco.Field("logo", recursive: true)">
+                        }
+                        else
+                        {
+                            @Umbraco.Field("siteName", recursive: true)
+                        }
+                    </a>
+                </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+            @if (menuItems.Count() > 0)
+            {
+                <ul class="right">
+                    <li><a href="/">Home</a></li>
+
+                    @foreach (var item in menuItems)
+                    {
+                        <li><a href="@item.Url">@item.Name</a></li>
+                    }
+                </ul>
+            }
+        </section>
+    </nav>
+</div>

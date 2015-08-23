@@ -1,0 +1,50 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="title-banner">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h1>@Umbraco.Field("Headline")</h1>
+        </div>
+    </div>
+</div>
+
+@{
+    var members = Umbraco.TypedContentAtXPath("//Softwareapplication")
+        .OrderBy(m => m.GetPropertyValue("Name"));
+}
+
+@if (members.Count() > 0)
+{
+    foreach (var item in members)
+    {
+        <div class="row">
+            <div class="large-12 columns">
+
+                <h3><span class="gt">&gt;</span> @item.GetPropertyValue("Name")</h3>
+
+                <ul class="fa-ul">
+                    <li>
+                        <i class="fa-li fa fa-link"></i>
+                        <a href="@item.GetPropertyValue("url")">@item.GetPropertyValue("url")</a>
+                    </li>
+
+                    @if (item.HasValue("tutorialUrl"))
+                    {
+                        <li>
+                            <i class="fa-li fa fa-info"></i>
+                            <a href="@item.GetPropertyValue("tutorialUrl")">Tutorial</a>
+                        </li>
+                    }
+                    
+                    <li>
+                        <i class="fa-li fa fa-life-ring"></i>
+                        <a href="mailto:supportvpf@vt.edu?subject=Finance Information Technology | Software Support">Support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+}

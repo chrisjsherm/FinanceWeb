@@ -1,0 +1,22 @@
+.call-to-action {
+    background: #660000;
+    color: #fff;
+    padding: 25px 0;
+
+	h3, a {
+		color: #FFF;
+	}
+
+	a {
+		text-decoration: underline;
+
+		&:hover {
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
+
+	.columns {
+		font-size: 80%;
+	}
+}

@@ -1,0 +1,73 @@
+.banner {
+	background-position: 50% 50%;
+	background-size: cover;
+	display: block;
+	height: 500px;
+	padding-top: 100px;
+	width: 100%;
+
+	@media #{$small-only} {
+		background-image: url(images/vpf-small-banner.jpg);
+	}
+
+	@media #{$medium-only} {
+		background-image: url(images/vpf-medium-banner.jpg);
+	}
+
+	@media #{$large-up} {
+		background-image: url(images/vpf-large-banner.jpg);
+	}
+
+	a {
+		background: #FF6600;
+		color: #fff;
+		display: inline-block;
+		padding: 5px 10px;
+	}
+
+	h1 {
+		margin: 0;
+		background: #660000;
+		color: #fff;
+		padding: 5px 10px;
+	}
+
+	h3 {
+		margin: 0;
+
+			background: #1a1a1a;
+			color: #fff;
+			padding: 5px 10px;
+
+		.sub-header {
+			line-height: 1;
+			padding: 0;
+		}
+	}
+}
+
+.banner-follow {
+	background: #1a1a1a;
+	color: #fff;
+	display: block;
+	margin-bottom: 40px;
+	padding: 25px 0;
+
+	p {
+		margin-bottom: 0;
+	}
+}
+	
+
+.title-banner {
+    background: #660000;
+    color: #fff;
+    margin-bottom: 1.25em;
+    padding: 15px 0;
+
+	h1 {
+			color: #fff;
+			margin: 0;
+			padding: 0;
+	}
+}

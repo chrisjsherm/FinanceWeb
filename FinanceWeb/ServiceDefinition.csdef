@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="FinanceWeb" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+  <WebRole name="WebRole" vmsize="ExtraSmall">
+    <Sites>
+      <Site name="InfoTechWeb" physicalDirectory="..\..\..\InfoTechWeb">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" hostHeader="fit.vpfin.vt.edu" />
+          <Binding name="Endpoint2" endpointName="HttpsEndpoint" hostHeader="fit.vpfin.vt.edu" />
+        </Bindings>
+      </Site>
+      <Site name="PresidentWeb" physicalDirectory="..\..\..\PresidentWeb">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" />
+          <Binding name="Endpoint2" endpointName="HttpsEndpoint" />
+        </Bindings>
+      </Site>
+      <Site name="WebResources" physicalDirectory="..\..\..\WebResources">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" hostHeader="static.vpfin.vt.edu" />
+          <Binding name="Endpoint2" endpointName="HttpsEndpoint" hostHeader="static.vpfin.vt.edu" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+      <InputEndpoint name="HttpsEndpoint" protocol="https" port="443" certificate="vpfin.vt.edu" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
+    </Imports>
+    <Certificates>
+      <Certificate name="vpfin.vt.edu" storeLocation="LocalMachine" storeName="My" />
+    </Certificates>
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+</ServiceDefinition>

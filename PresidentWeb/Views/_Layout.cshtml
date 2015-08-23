@@ -1,0 +1,68 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+
+    @*Set the viewport width to device width for mobile *@
+    <meta name="viewport" content="width=device-width" />
+
+    <title>@Umbraco.Field("pageName") | @Umbraco.Field("siteName", recursive: true)</title>
+    <meta name="description" content="@Umbraco.Field("metaTagDescription")" />
+
+    <link rel="icon" href="//static.vpfin.vt.edu/Content/favicon.ico" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//static.vpfin.vt.edu/Content/Site.css" rel="stylesheet">
+    
+    @RenderSection("head", required: false)
+    <!-- TODO: Add check for JS and Cookies -->
+</head>
+<body>
+    <header>
+        @{ Html.RenderPartial("NavigationBar"); }
+    </header>
+
+    <section class="content">
+        @RenderBody()
+    </section>
+
+    <div class="call-to-action">
+        <div class="row">
+            <div class="small-12 columns">
+                <h3>@Umbraco.Field("CTAHeading", recursive: true) <strong>@Umbraco.Field("CTAHeadingEmphasis", recursive: true)</strong></h3>
+
+                <p>
+                    @Umbraco.Field("CallToAction", recursive: true)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @{ Html.RenderPartial("Footer"); }
+
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery@2,foundation@5(js/vendor/fastclick.js+js/foundation.min.js)"></script>
+    <script type="text/javascript">
+        $(document).foundation();
+    </script>
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-47097225-4', 'vt.edu');
+        ga('send', 'pageview');
+    </script>
+
+    @*Use the Scripts section to define page specific scripts*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

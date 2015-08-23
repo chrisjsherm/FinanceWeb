@@ -1,0 +1,43 @@
+.panel {
+	@extend .panel;
+
+	background-color: #E9E9E9;
+}
+
+.panel-box {
+	background-color: #fff;
+    border: #ddd 1px solid;
+    border-top: #FF6600 2px solid;
+    color: #777;
+    margin-bottom: 25px;
+    padding: 15px;
+
+	i {
+        color: #777;
+    }
+
+	img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0.9em;
+    }
+
+    p {
+        margin-bottom: 0 !important;
+    }
+
+	ul {
+        margin-bottom: 0;
+    }
+}
+
+.panel-box-padded-left {
+	@extend .panel-box;
+	margin-left: 25px;
+}
+
+.panel-box-padded-right {
+	@extend .panel-box;
+	margin-right: 25px;
+}
